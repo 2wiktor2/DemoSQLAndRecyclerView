@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -16,7 +17,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView textViewResult;
 
     Button buttonCalculate;
-    Button buttonsave;
+    Button buttonSave;
+    Button history;
+
+    private int num1, num2, sum;
+
+    private DBHelper helper;
+
 
 
     @Override
@@ -29,9 +36,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         textViewResult = findViewById(R.id.tv_result2);
 
         buttonCalculate = findViewById(R.id.b_calculate);
-        buttonsave = findViewById(R.id.b_save);
+        buttonSave = findViewById(R.id.b_save);
+        history = findViewById(R.id.b_saved_history);
         buttonCalculate.setOnClickListener(this);
-        buttonsave.setOnClickListener(this);
+        buttonSave.setOnClickListener(this);
+        history.setOnClickListener(this);
+
 
 
 
@@ -42,7 +52,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.b_calculate:
-                textViewResult.setText("555");
+              if (!editTextNumber1.getText().toString().equals("") && !editTextNumber2.getText().toString().equals("")) {
+                  num1 = Integer.parseInt(editTextNumber1.getText().toString());
+                  num2 = Integer.parseInt(editTextNumber2.getText().toString());
+                  sum = num1+num2;
+                  textViewResult.setText(""+sum);
+              } else {
+                  Toast.makeText(this, "введите числа", Toast.LENGTH_LONG).show();
+              }
+
 
                 break;
                 case R.id.b_save:
@@ -53,6 +71,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     bundle.putString(Constants.KEY_RESULT, textViewResult.getText().toString());
                     intent.putExtras(bundle);
                     startActivity(intent);
+                break;
+            case R.id.b_saved_history:
+                helper = new DBHelper(this);
+                helper.getData();
                 break;
         }
 

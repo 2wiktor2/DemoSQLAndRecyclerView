@@ -2,6 +2,7 @@ package com.wiktor.demosqlandrecyclerview;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -76,28 +77,30 @@ public class DBHelper extends SQLiteOpenHelper {
                 COLUMN_SHOP,
                 COLUMN_PRISE,
                 COLUMN_NOTES};
+        Cursor cursor = db.query(NAME_OF_TABLE, columns, null, null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            int idFromTable = cursor.getColumnIndex(COLUMN_ID);
+            int dataTimeFromTable = cursor.getColumnIndex(COLUMN_DATA_TIME);
+            int num1FromTable = cursor.getColumnIndex(COLUMN_NUM_1);
+            int num2FromTable = cursor.getColumnIndex(COLUMN_NUM_2);
+            int num3FromTable = cursor.getColumnIndex(COLUMN_NUM_3);
+            int shopFromTable = cursor.getColumnIndex(COLUMN_SHOP);
+            int priseFromTable = cursor.getColumnIndex(COLUMN_PRISE);
+            int notesFromTable = cursor.getColumnIndex(COLUMN_NOTES);
 
-
-/*
-            String selection = AGE_COLUMN + " = ? AND " + FIO_COLUMN+ " = ?";
-            String[] selectionArgs = new String[]{"3", "kkk"};
-            Cursor cursor = db.query(TABLE_NAME, columns, selection, selectionArgs, null, null, FIO_COLUMN + " desc");
-
-            if (cursor.moveToFirst()) {
-                int idIndex = cursor.getColumnIndex(ID_COLUMN);
-                int fio = cursor.getColumnIndex(FIO_COLUMN);
-                int age = cursor.getColumnIndex(AGE_COLUMN);
-                do {
-                    Log.d("ololo",
-                            " fio = " + cursor.getString(fio) +
-                                    " age = " + cursor.getString(age));
-
-                } while (cursor.moveToNext());
-
-                cursor.close();
-            }
+            do {
+                Log.d("ololo", "id = " + cursor.getInt(idFromTable) +
+                        " data = " + cursor.getString(dataTimeFromTable) +
+                        " num1 = " + cursor.getInt(num1FromTable) +
+                        " num2 = " + cursor.getInt(num2FromTable) +
+                        " num3 = " + cursor.getInt(num3FromTable) +
+                        " shop = " + cursor.getInt(shopFromTable) +
+                        " prise = " + cursor.getInt(priseFromTable) +
+                        " notes = " + cursor.getInt(notesFromTable));
+            } while (cursor.moveToNext());
+            cursor.close();
         }
-*/
+
 
 /*        case R.id.btnRead:
         Log.d(LOG_TAG, "--- Rows in mytable: ---");

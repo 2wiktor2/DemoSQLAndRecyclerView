@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -26,7 +27,7 @@ public class SaveFormActivity extends AppCompatActivity implements View.OnClickL
 
     int number1, number2, number3;
 
-    DBHelper helper;
+    private DBHelper helper;
     String myDataTime;
 
 
@@ -72,7 +73,8 @@ public class SaveFormActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         addRow();
-
+        // todo Вегнуться обратно  на 1 страницу
+        closeActivity();
     }
 
     // todo 1  наполнить данными
@@ -83,12 +85,16 @@ public class SaveFormActivity extends AppCompatActivity implements View.OnClickL
         String notes = editTextNotes.getText().toString();
 
         helper.createRow(time, number1, number2, number3, shop, prise, notes);
+        Toast.makeText(this, "Запись сохранена в базу", Toast.LENGTH_SHORT).show();
+
+
 
     }
 
     // todo 2 получить данные
     private void select() {
         helper.getData();
+        goBack();
 
     }
 
@@ -97,4 +103,11 @@ public class SaveFormActivity extends AppCompatActivity implements View.OnClickL
         super.onStop();
         helper.close();
     }
+    public void goBack(){
+
+    }
+    private void closeActivity(){
+        finish();
+    }
+
 }
