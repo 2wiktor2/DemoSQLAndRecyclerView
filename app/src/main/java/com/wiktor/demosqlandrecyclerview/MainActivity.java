@@ -75,6 +75,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.b_saved_history:
                 helper = new DBHelper(this);
                 helper.getData();
+
+                Intent intent1 = new Intent(this, RecyclerActivity.class );
+                startActivity(intent1);
+
                 break;
         }
 

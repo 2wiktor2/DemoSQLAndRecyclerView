@@ -67,7 +67,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 " Notes = " + notes);
     }
 
-    public void getData() {
+     void getData() {
         SQLiteDatabase db = getWritableDatabase();
         String[] columns = {COLUMN_ID,
                 COLUMN_DATA_TIME,
@@ -94,9 +94,9 @@ public class DBHelper extends SQLiteOpenHelper {
                         " num1 = " + cursor.getInt(num1FromTable) +
                         " num2 = " + cursor.getInt(num2FromTable) +
                         " num3 = " + cursor.getInt(num3FromTable) +
-                        " shop = " + cursor.getInt(shopFromTable) +
+                        " shop = " + cursor.getString(shopFromTable) +
                         " prise = " + cursor.getInt(priseFromTable) +
-                        " notes = " + cursor.getInt(notesFromTable));
+                        " notes = " + cursor.getString(notesFromTable));
             } while (cursor.moveToNext());
             cursor.close();
         }

@@ -1,6 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:clickable="true"
+    android:background="#e7ffd3">
+
+    <TextView
+        android:id="@+id/tv_data_for_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="data" />
+
+    <TextView
+        android:id="@+id/tv_id_for_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="id"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_result_for_item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Результат"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_data_for_item" />
+
+    <TextView
+        android:id="@+id/tv_num3_for_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="1024"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_result_for_item_text" />
+
+    <TextView
+        android:id="@+id/tv_num1_for_item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="number1 = "
+        app:layout_constraintTop_toBottomOf="@id/tv_num3_for_item" />
+
+    <TextView
+        android:id="@+id/tv_num1_for_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="num1"
+        app:layout_constraintLeft_toRightOf="@+id/tv_num1_for_item_text"
+        app:layout_constraintTop_toBottomOf="@id/tv_num3_for_item" />
+
+    <TextView
+        android:id="@+id/tv_num2_for_item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="number2 = "
+        app:layout_constraintRight_toLeftOf="@id/tv_num2_for_item"
+        app:layout_constraintTop_toBottomOf="@id/tv_num3_for_item" />
+
+    <TextView
+        android:id="@+id/tv_num2_for_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="num2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_num3_for_item" />
+
+    <TextView
+        android:id="@+id/tv_prise_for_item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Цена "
+        app:layout_constraintTop_toBottomOf="@id/tv_num1_for_item_text" />
+
+    <TextView
+        android:id="@+id/tv_prise_for_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:hint="Цена "
+        app:layout_constraintLeft_toRightOf="@id/tv_prise_for_item_text"
+        app:layout_constraintTop_toBottomOf="@id/tv_num1_for_item_text" />
+
+    <TextView
+        android:id="@+id/tv_shop_for_item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Магазин "
+        app:layout_constraintTop_toBottomOf="@id/tv_prise_for_item" />
+
+    <TextView
+
+        android:id="@+id/tv_shop_for_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:hint="Магазин"
+        app:layout_constraintLeft_toRightOf="@id/tv_shop_for_item_text"
+        app:layout_constraintTop_toBottomOf="@id/tv_prise_for_item" />
+
+    <TextView
+        android:id="@+id/tv_notes_for_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Заметки"
+        app:layout_constraintLeft_toRightOf="@id/tv_shop_for_item_text"
+        app:layout_constraintTop_toBottomOf="@id/tv_shop_for_item" />
+
 
 </android.support.constraint.ConstraintLayout>
