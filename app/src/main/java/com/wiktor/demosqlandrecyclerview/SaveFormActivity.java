@@ -85,7 +85,7 @@ public class SaveFormActivity extends AppCompatActivity implements View.OnClickL
         String notes = editTextNotes.getText().toString();
 
         helper.createRow(time, number1, number2, number3, shop, prise, notes);
-        Toast.makeText(this, "Запись сохранена в базу", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Запись сохранена", Toast.LENGTH_SHORT).show();
 
 
 

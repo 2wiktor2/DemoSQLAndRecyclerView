@@ -8,9 +8,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class Adapter extends RecyclerView.Adapter <Adapter.ViewHolder> {
 
+    private ArrayList <HistoryModel> listOfModels;
+
     //DBHelper helper = new DBHelper();
+    public Adapter(ArrayList <HistoryModel> listOfModels) {
+        this.listOfModels = listOfModels;
+    }
 
     @NonNull
     @Override
@@ -27,7 +34,7 @@ public class Adapter extends RecyclerView.Adapter <Adapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 10;
+        return listOfModels.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -55,7 +62,7 @@ public class Adapter extends RecyclerView.Adapter <Adapter.ViewHolder> {
         }
 
         void bind() {
-           // helper = new DBHelper();
+            // helper = new DBHelper();
 
         }
     }

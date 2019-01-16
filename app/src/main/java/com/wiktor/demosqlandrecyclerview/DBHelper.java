@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 public class DBHelper extends SQLiteOpenHelper {
 
     final String NAME_OF_DB = "DBForCrossSection";
@@ -36,7 +38,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 COLUMN_NUM_2 + " integer, " +
                 COLUMN_NUM_3 + " integer, " +
                 COLUMN_SHOP + " text, " +
-                COLUMN_PRISE + " text, " +
+                COLUMN_PRISE + " integer, " +
                 COLUMN_NOTES + " text);");
         //db.execSQL("Create table " + NAME_OF_TABLE + " ( " + ID_COLUMN + " integer primary key autoincrement, " +  FIO_COLUMN + " text, " +  AGE_COLUMN + " text );");
     }
@@ -67,7 +69,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 " Notes = " + notes);
     }
 
-     void getData() {
+    public ArrayList <HistoryModel> getData() {
+        ArrayList <HistoryModel> arrayList = new ArrayList <>();
         SQLiteDatabase db = getWritableDatabase();
         String[] columns = {COLUMN_ID,
                 COLUMN_DATA_TIME,
@@ -89,46 +92,21 @@ public class DBHelper extends SQLiteOpenHelper {
             int notesFromTable = cursor.getColumnIndex(COLUMN_NOTES);
 
             do {
-                Log.d("ololo", "id = " + cursor.getInt(idFromTable) +
-                        " data = " + cursor.getString(dataTimeFromTable) +
-                        " num1 = " + cursor.getInt(num1FromTable) +
-                        " num2 = " + cursor.getInt(num2FromTable) +
-                        " num3 = " + cursor.getInt(num3FromTable) +
-                        " shop = " + cursor.getString(shopFromTable) +
-                        " prise = " + cursor.getInt(priseFromTable) +
-                        " notes = " + cursor.getString(notesFromTable));
+                HistoryModel hm = new HistoryModel(
+                        cursor.getInt(idFromTable),
+                        cursor.getString(dataTimeFromTable),
+                        cursor.getInt(num1FromTable),
+                        cursor.getInt(num2FromTable),
+                        cursor.getInt(num3FromTable),
+                        cursor.getString(shopFromTable),
+                        cursor.getInt(priseFromTable),
+                        cursor.getString(notesFromTable)
+                );
+                arrayList.add(hm);
+
             } while (cursor.moveToNext());
             cursor.close();
         }
-
-
-/*        case R.id.btnRead:
-        Log.d(LOG_TAG, "--- Rows in mytable: ---");
-        // делаем запрос всех данных из таблицы mytable, получаем Cursor
-        Cursor c = db.query("mytable", null, null, null, null, null, null);
-
-        // ставим позицию курсора на первую строку выборки
-        // если в выборке нет строк, вернется false
-        if (c.moveToFirst()) {
-
-            // определяем номера столбцов по имени в выборке
-            int idColIndex = c.getColumnIndex("id");
-            int nameColIndex = c.getColumnIndex("name");
-            int emailColIndex = c.getColumnIndex("email");
-
-            do {
-                // получаем значения по номерам столбцов и пишем все в лог
-                Log.d(LOG_TAG,
-                        "ID = " + c.getInt(idColIndex) +
-                                ", name = " + c.getString(nameColIndex) +
-                                ", email = " + c.getString(emailColIndex));
-                // переход на следующую строку
-                // а если следующей нет (текущая - последняя), то false - выходим из цикла
-            } while (c.moveToNext());
-        } else
-            Log.d(LOG_TAG, "0 rows");
-        c.close();
-        break;*/
-
+        return arrayList;
     }
 }
