@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
     android:clickable="true"
-    android:background="#e7ffd3">
+    android:background="#d3e8ff">
 
     <TextView
         android:id="@+id/tv_data_for_item"

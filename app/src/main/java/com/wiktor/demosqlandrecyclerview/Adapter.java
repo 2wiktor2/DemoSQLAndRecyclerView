@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -29,7 +28,7 @@ public class Adapter extends RecyclerView.Adapter <Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-
+        viewHolder.bind(listOfModels.get(i));
     }
 
     @Override
@@ -51,19 +50,33 @@ public class Adapter extends RecyclerView.Adapter <Adapter.ViewHolder> {
             super(itemView);
             textViewID = itemView.findViewById(R.id.tv_id_for_item);
             textViewData = itemView.findViewById(R.id.tv_data_for_item);
+            textViewNumber1 = itemView.findViewById(R.id.tv_num1_for_item);
+            textViewNumber2 = itemView.findViewById(R.id.tv_num2_for_item);
             textViewResult = itemView.findViewById(R.id.tv_num3_for_item);
+            textViewShop = itemView.findViewById(R.id.tv_shop_for_item);
+            textViewPrise = itemView.findViewById(R.id.tv_prise_for_item);
+            textViewNotes = itemView.findViewById(R.id.tv_notes_for_item);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            // нажатие по элементу
+/*            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(itemView.getContext(), "Toastik", Toast.LENGTH_SHORT).show();
                 }
-            });
+            });*/
         }
 
-        void bind() {
-            // helper = new DBHelper();
-
+        public void bind(HistoryModel historyModel) {
+            textViewID.setText("" + historyModel.getId());
+            textViewData.setText(historyModel.getTime());
+            textViewNumber1.setText("" + historyModel.getNumber1());
+            textViewNumber2.setText("" + historyModel.getNumber2());
+            textViewResult.setText("" + historyModel.getNumber3());
+            textViewShop.setText(historyModel.getShop());
+            textViewPrise.setText("" + historyModel.getPrise());
+            textViewNotes.setText(historyModel.getNotes());
         }
+
+
     }
 }
