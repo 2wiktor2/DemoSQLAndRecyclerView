@@ -32,7 +32,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("Create table " + NAME_OF_TABLE + " ( " + COLUMN_ID + " integer primary key autoincrement, " +
+        db.execSQL("Create table " + NAME_OF_TABLE + " ( " + COLUMN_ID +
+                " integer primary key autoincrement, " +
                 COLUMN_DATA_TIME + " text, " +
                 COLUMN_NUM_1 + " integer, " +
                 COLUMN_NUM_2 + " integer, " +
@@ -40,7 +41,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 COLUMN_SHOP + " text, " +
                 COLUMN_PRISE + " integer, " +
                 COLUMN_NOTES + " text);");
-        //db.execSQL("Create table " + NAME_OF_TABLE + " ( " + ID_COLUMN + " integer primary key autoincrement, " +  FIO_COLUMN + " text, " +  AGE_COLUMN + " text );");
+        //db.execSQL("Create table " + NAME_OF_TABLE + " ( " + ID_COLUMN +
+        // " integer primary key autoincrement, " +  FIO_COLUMN + " text, " +
+        // AGE_COLUMN + " text );");
     }
 
     @Override
@@ -80,7 +83,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 COLUMN_SHOP,
                 COLUMN_PRISE,
                 COLUMN_NOTES};
-        Cursor cursor = db.query(NAME_OF_TABLE, columns, null, null, null, null, null, null);
+        Cursor cursor = db.query(NAME_OF_TABLE, columns, null, null,
+                null, null, null, null);
         if (cursor.moveToFirst()) {
             int idFromTable = cursor.getColumnIndex(COLUMN_ID);
             int dataTimeFromTable = cursor.getColumnIndex(COLUMN_DATA_TIME);

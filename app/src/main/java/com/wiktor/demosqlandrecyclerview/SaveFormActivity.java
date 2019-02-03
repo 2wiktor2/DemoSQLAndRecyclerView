@@ -86,9 +86,6 @@ public class SaveFormActivity extends AppCompatActivity implements View.OnClickL
 
         helper.createRow(time, number1, number2, number3, shop, prise, notes);
         Toast.makeText(this, "Запись сохранена", Toast.LENGTH_SHORT).show();
-
-
-
     }
 
     // todo 2 получить данные

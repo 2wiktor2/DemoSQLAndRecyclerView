@@ -67,13 +67,13 @@ public class Adapter extends RecyclerView.Adapter <Adapter.ViewHolder> {
         }
 
         public void bind(HistoryModel historyModel) {
-            textViewID.setText("" + historyModel.getId());
+            textViewID.setText(String.valueOf(historyModel.getId()));
             textViewData.setText(historyModel.getTime());
-            textViewNumber1.setText("" + historyModel.getNumber1());
-            textViewNumber2.setText("" + historyModel.getNumber2());
-            textViewResult.setText("" + historyModel.getNumber3());
+            textViewNumber1.setText(String.valueOf(historyModel.getNumber1()));
+            textViewNumber2.setText(String.valueOf(historyModel.getNumber2()));
+            textViewResult.setText(String.valueOf(historyModel.getNumber3()));
             textViewShop.setText(historyModel.getShop());
-            textViewPrise.setText("" + historyModel.getPrise());
+            textViewPrise.setText(String.valueOf(historyModel.getPrise()));
             textViewNotes.setText(historyModel.getNotes());
         }
 

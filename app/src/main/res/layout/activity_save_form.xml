@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".SaveFormActivity">
 
-
     <TextView
         android:visibility="invisible"
         app:layout_constraintRight_toRightOf="parent"
@@ -23,8 +22,6 @@
         android:hint="data"
         android:inputType="date"
         app:layout_constraintTop_toBottomOf="@id/tv_row_id" />
-
-
 
     <TextView
         android:id="@+id/tv_num1"
